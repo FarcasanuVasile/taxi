@@ -49,7 +49,7 @@ router.post(
 			});
 		} catch (error) {
 			console.error(error.message);
-			res.status(500).json({ message: "Error while saving the user!" });
+			res.status(500).send({ message: "Error while saving the user!" }, error);
 		}
 	}
 );

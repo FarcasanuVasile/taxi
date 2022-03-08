@@ -10,6 +10,7 @@ app.use(express.json({ extended: false }));
 // Register API routes
 app.use("/api/users", require("./routes/users"));
 app.use("/api/auth", require("./routes/auth"));
+app.use("/api/cars", require("./routes/cars"));
 
 app.get("/*", (req, res) => res.sendDate(path.join(__dirname, "./client/src/index.html")));
 

@@ -11,8 +11,11 @@ app.use(express.json({ extended: false }));
 app.use("/api/users", require("./routes/users"));
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/cars", require("./routes/cars"));
+app.use("/api/itineraries", require("./routes/itinerary"));
 
-app.get("/*", (req, res) => res.sendDate(path.join(__dirname, "./client/src/index.html")));
+app.get("/*", (req, res) => {
+	res.sendFile(path.join(__dirname, "./client/src/index.html"));
+});
 
 const PORT = process.env.PORT || 5000;
 

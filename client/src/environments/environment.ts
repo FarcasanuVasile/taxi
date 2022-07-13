@@ -13,10 +13,46 @@ const mapOptions: google.maps.MapOptions = {
   zoom: 11,
 };
 
+const cars = [
+  {
+    id: 0,
+    make: 'Peugeot',
+    model: '407',
+    color: 'Gri',
+    year: '2006',
+    img: 'https://th.bing.com/th/id/R.ef59b8951025fe502b6aebe69060c07d?rik=GOtHWeF%2by7Ucqw&pid=ImgRaw&r=0',
+  },
+  {
+    id: 0,
+    make: 'Peugeot',
+    model: '508',
+    color: 'Neagra',
+    year: '2016',
+    img: 'https://th.bing.com/th/id/R.0c595f3dc406c498a2a24de5f9dfd461?rik=dK5HsPxHFYgvdg&pid=ImgRaw&r=0',
+  },
+  {
+    id: 0,
+    make: 'Audi',
+    model: 'A4',
+    color: 'Galbena',
+    year: '2015',
+    img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Audi_A4_allroad_quattro_Phantomschwarz.JPG/1280px-Audi_A4_allroad_quattro_Phantomschwarz.JPG',
+  },
+  {
+    id: 0,
+    make: 'BMW',
+    model: '320',
+    color: 'Albastra',
+    year: '2018',
+    img: 'https://th.bing.com/th/id/R.2b59cb0402739163cb997ad70e81b936?rik=fAv47ffFxph97A&pid=ImgRaw&r=0',
+  },
+];
+
 export const environment = {
   production: false,
   autoCompleteConfig: { componentRestrictions: { country: 'RO' } },
   mapOptions,
+  cars,
 };
 
 /*

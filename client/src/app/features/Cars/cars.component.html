@@ -1,0 +1,19 @@
+<div class="cars-wrapper">
+  <div class="car-item" *ngFor="let car of cars; let i = index">
+    <label
+      for="car-{{ i }}"
+      class="row my-2 align-items-center justify-content-center"
+    >
+      <div class="col-md-1">
+        <input type="radio" value="car.id" name="car-input" id="car-{{ i }}" />
+      </div>
+      <div class="col-md-1">{{ car.make }}</div>
+      <div class="col-md-1">{{ car.model }}</div>
+      <div class="col-md-1">{{ car.year }}</div>
+      <div class="col-md-1">{{ car.color }}</div>
+      <div class="col-md-1">
+        <img [src]="car.img" [alt]="car.make" class="img-fluid" />
+      </div>
+    </label>
+  </div>
+</div>

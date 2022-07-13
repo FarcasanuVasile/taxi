@@ -5,8 +5,25 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit, AfterViewInit {
+export class AppComponent implements OnInit {
+  currentStep: number;
+  steps!: any;
   constructor() {}
-  ngOnInit(): void {}
-  ngAfterViewInit(): void {}
+  ngOnInit(): void {
+    this.currentStep = 0;
+    this.steps = [
+      { id: 0, title: 'Alege traseul' },
+      { id: 1, title: 'Alege masina' },
+      { id: 2, title: 'Introdu datele personale' },
+      { id: 3, title: 'Sumar cursa' },
+    ];
+  }
+  onStepForward() {
+    if (this.currentStep == this.steps.length) return;
+    this.currentStep++;
+  }
+  onStepBackwards() {
+    if (this.currentStep == 0) return;
+    this.currentStep--;
+  }
 }

@@ -1,3 +1,22 @@
-<div class="container">
-  <app-trajectory></app-trajectory>
+<div class="container pt-4">
+  <h6 class="text-center">Pasul {{ currentStep + 1 }}:</h6>
+  <h4 class="text-center">{{ steps[currentStep].title }}</h4>
+  <app-trajectory *ngIf="currentStep == 0"></app-trajectory>
+  <app-cars *ngIf="currentStep == 1"></app-cars>
+  <div class="buttons-wrapper text-center">
+    <button
+      class="btn btn-secondary text-capitalize mx-2"
+      (click)="onStepBackwards()"
+      [disabled]="currentStep == 0"
+    >
+      înapoi
+    </button>
+    <button
+      class="btn btn-primary text-capitalize mx-2"
+      (click)="onStepForward()"
+      [disabled]="currentStep == steps.length - 1"
+    >
+      înainte
+    </button>
+  </div>
 </div>

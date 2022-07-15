@@ -18,6 +18,9 @@ export class AppComponent implements OnInit {
       { id: 3, title: 'Sumar cursa' },
     ];
   }
+  currentStepCompleted(): boolean {
+    return false;
+  }
   onStepForward() {
     if (this.currentStep == this.steps.length) return;
     this.currentStep++;

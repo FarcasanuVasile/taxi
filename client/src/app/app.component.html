@@ -3,6 +3,7 @@
   <h4 class="text-center">{{ steps[currentStep].title }}</h4>
   <app-trajectory *ngIf="currentStep == 0"></app-trajectory>
   <app-cars *ngIf="currentStep == 1"></app-cars>
+  <app-customer *ngIf="currentStep == 2"></app-customer>
   <div class="buttons-wrapper text-center">
     <button
       class="btn btn-secondary text-capitalize mx-2"
@@ -14,7 +15,7 @@
     <button
       class="btn btn-primary text-capitalize mx-2"
       (click)="onStepForward()"
-      [disabled]="currentStep == steps.length - 1"
+      [disabled]="currentStep == steps.length - 1 || !currentStepCompleted()"
     >
       înainte
     </button>

@@ -1,4 +1,5 @@
 import { Component, ElementRef, NgZone, ViewChild } from '@angular/core';
+import { AppService } from 'src/app/app.service';
 
 import { environment } from 'src/environments/environment';
 
@@ -21,7 +22,7 @@ export class TrajectoryComponent {
   @ViewChild('depart') fromElementRef!: ElementRef;
   @ViewChild('destination') destinationElementRef!: ElementRef;
 
-  constructor(private ngZone: NgZone) {}
+  constructor(private ngZone: NgZone, private appService: AppService) {}
 
   ngOnInit() {}
 
@@ -65,7 +66,10 @@ export class TrajectoryComponent {
           const coords: google.maps.LatLng = new google.maps.LatLng(lat, lng);
           this.mapOb.setCenter(coords);
         }
-        if (!isReadyToDisplayDirections) this.directionsDisplay.setMap(null);
+        if (!isReadyToDisplayDirections) {
+          this.directionsDisplay.setMap(null);
+          this.appService.setStepStatus(0, false);
+        }
         if (isReadyToDisplayDirections) this.displayDirections();
       });
     });
@@ -96,5 +100,6 @@ export class TrajectoryComponent {
         this.distance = response?.routes[0].legs[0].distance?.text;
       }
     });
+    this.appService.setStepStatus(0, true);
   }
 }

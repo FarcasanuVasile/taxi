@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppService } from './app.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
   currentStep: number;
   steps!: any;
-  constructor() {}
+  constructor(private appService: AppService) {}
   ngOnInit(): void {
     this.currentStep = 0;
     this.steps = [
@@ -19,7 +20,8 @@ export class AppComponent implements OnInit {
     ];
   }
   currentStepCompleted(): boolean {
-    return false;
+    const isCompleted = this.appService.getStepStatus(this.currentStep);
+    return isCompleted;
   }
   onStepForward() {
     if (this.currentStep == this.steps.length) return;

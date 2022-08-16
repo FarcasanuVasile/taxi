@@ -15,6 +15,7 @@ export class TrajectoryComponent {
   mapOb: google.maps.Map;
   fromAutoComplete: google.maps.places.Autocomplete;
   destinationAutoComplete: google.maps.places.Autocomplete;
+  directionsDisplay: google.maps.DirectionsRenderer;
 
   @ViewChild('map') map: ElementRef;
   @ViewChild('depart') fromElementRef!: ElementRef;
@@ -38,6 +39,9 @@ export class TrajectoryComponent {
       true
     );
     this.setMap();
+    this.directionsDisplay = new google.maps.DirectionsRenderer({
+      map: this.mapOb,
+    });
   }
 
   setAutoCompleteListener(
@@ -61,11 +65,12 @@ export class TrajectoryComponent {
           const coords: google.maps.LatLng = new google.maps.LatLng(lat, lng);
           this.mapOb.setCenter(coords);
         }
-
+        if (!isReadyToDisplayDirections) this.directionsDisplay.setMap(null);
         if (isReadyToDisplayDirections) this.displayDirections();
       });
     });
   }
+
   setMap() {
     this.mapOb = new google.maps.Map(
       this.map.nativeElement,
@@ -74,10 +79,7 @@ export class TrajectoryComponent {
   }
 
   displayDirections() {
-    const directionsDisplay: google.maps.DirectionsRenderer =
-      new google.maps.DirectionsRenderer({
-        map: this.mapOb,
-      });
+    this.directionsDisplay.setMap(this.mapOb);
 
     const request: google.maps.DirectionsRequest = {
       origin: this.fromElementRef.nativeElement.value,
@@ -86,11 +88,9 @@ export class TrajectoryComponent {
     };
 
     const directionsService = new google.maps.DirectionsService();
-    directionsDisplay.setMap(this.mapOb);
     directionsService.route(request, (response, status) => {
       if (status == google.maps.DirectionsStatus.OK) {
-        directionsDisplay.setDirections(response);
-
+        this.directionsDisplay.setDirections(response);
         this.routeData = { ...response?.routes[0].legs[0] };
         this.time = response?.routes[0].legs[0].duration?.text;
         this.distance = response?.routes[0].legs[0].distance?.text;

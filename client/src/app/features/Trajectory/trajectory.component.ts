@@ -69,6 +69,7 @@ export class TrajectoryComponent {
         if (!isReadyToDisplayDirections) {
           this.directionsDisplay.setMap(null);
           this.appService.setStepStatus(0, false);
+          this.destinationElementRef.nativeElement.value = '';
         }
         if (isReadyToDisplayDirections) this.displayDirections();
       });
@@ -101,5 +102,9 @@ export class TrajectoryComponent {
       }
     });
     this.appService.setStepStatus(0, true);
+    this.appService.setBookingTrajectory({
+      from: this.fromElementRef.nativeElement.value,
+      to: this.destinationElementRef.nativeElement.value,
+    });
   }
 }

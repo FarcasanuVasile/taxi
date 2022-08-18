@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { TrajectoryComponent } from './features/Trajectory/trajectory.component';
 import { CarsComponents } from './features/Cars/cars.component';
 import { CustomerComponent } from './features/Customer/customer.component';
+import { FormsModule } from '@angular/forms';
+import { SummaryComponent } from './features/Summary/summary.component';
 
 @NgModule({
   declarations: [
@@ -13,8 +15,9 @@ import { CustomerComponent } from './features/Customer/customer.component';
     TrajectoryComponent,
     CarsComponents,
     CustomerComponent,
+    SummaryComponent,
   ],
-  imports: [BrowserModule, GoogleMapsModule],
+  imports: [BrowserModule, GoogleMapsModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

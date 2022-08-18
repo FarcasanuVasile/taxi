@@ -23,7 +23,7 @@ const cars = [
     img: 'https://th.bing.com/th/id/R.ef59b8951025fe502b6aebe69060c07d?rik=GOtHWeF%2by7Ucqw&pid=ImgRaw&r=0',
   },
   {
-    id: 0,
+    id: 1,
     make: 'Peugeot',
     model: '508',
     color: 'Neagra',
@@ -31,7 +31,7 @@ const cars = [
     img: 'https://th.bing.com/th/id/R.0c595f3dc406c498a2a24de5f9dfd461?rik=dK5HsPxHFYgvdg&pid=ImgRaw&r=0',
   },
   {
-    id: 0,
+    id: 2,
     make: 'Audi',
     model: 'A4',
     color: 'Galbena',
@@ -39,7 +39,7 @@ const cars = [
     img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Audi_A4_allroad_quattro_Phantomschwarz.JPG/1280px-Audi_A4_allroad_quattro_Phantomschwarz.JPG',
   },
   {
-    id: 0,
+    id: 3,
     make: 'BMW',
     model: '320',
     color: 'Albastra',

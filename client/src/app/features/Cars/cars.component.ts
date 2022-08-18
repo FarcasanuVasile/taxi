@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppService } from 'src/app/app.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -8,8 +9,12 @@ import { environment } from 'src/environments/environment';
 })
 export class CarsComponents implements OnInit {
   cars;
-  constructor() {}
+  constructor(private appService: AppService) {}
   ngOnInit(): void {
     this.cars = environment.cars;
+  }
+  onSelectCar(i) {
+    this.appService.setStepStatus(1, true);
+    this.appService.setBookingCar(this.cars[i].id);
   }
 }

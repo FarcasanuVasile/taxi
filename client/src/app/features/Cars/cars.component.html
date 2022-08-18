@@ -3,6 +3,7 @@
     <label
       for="car-{{ i }}"
       class="row my-2 align-items-center justify-content-center"
+      (click)="onSelectCar(i)"
     >
       <div class="col-md-1">
         <input type="radio" value="car.id" name="car-input" id="car-{{ i }}" />
